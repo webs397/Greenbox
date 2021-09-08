@@ -7,8 +7,8 @@ pump = 11
 lamp = 13
 
 # water_voltage = 12
-water_low = 16
-water_high = 18
+water_low = 18
+water_high = 16
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(pump, GPIO.OUT)
@@ -46,7 +46,8 @@ try:
                 #GPIO.output(pump, True)
                 print("water low")
             if GPIO.input(water_high) == False or time.time() > timeout:
-                GPIO.output(pump, False)
+                #GPIO.output(pump, False)
+                print("water high")
 
             if now.hour < 8 or now.hour > 18:
                 mode = "night"
