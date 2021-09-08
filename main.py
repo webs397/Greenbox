@@ -43,7 +43,7 @@ try:
             # False means switch closed
             if GPIO.input(water_low) == False:
                 timeout = time.time() + water_time
-                GPIO.output(pump, True)
+                #GPIO.output(pump, True)
                 print("water low")
             if GPIO.input(water_high) == False or time.time() > timeout:
                 GPIO.output(pump, False)
