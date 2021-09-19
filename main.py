@@ -41,6 +41,8 @@ try:
 # Potential to implement Fluid level checking and Fluid level adjustments
         while mode == "day":
             # False means switch closed
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
             if GPIO.input(water_low) == False:
                 timeout = time.time() + water_time
                 #GPIO.output(pump, False)
@@ -49,7 +51,7 @@ try:
                 #GPIO.output(pump, True)
                 print("water high")
 
-            if now.hour < 8 or now.hour > 18:
+            if now.hour < 8 or now.hour >= 18:
                 mode = "night"
             else:
                 mode = "day"
